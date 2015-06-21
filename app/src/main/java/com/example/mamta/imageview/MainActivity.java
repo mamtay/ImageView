@@ -1,7 +1,6 @@
 package com.example.mamta.imageview;
 
 import android.content.res.Resources;
-import android.graphics.drawable.VectorDrawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,12 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-
-import java.lang.reflect.Field;
-import java.util.Vector;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -26,29 +20,27 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 	}
 
+	public void Next(View view) {
+		count = count + 1;
+		Button button1 = (Button) findViewById(R.id.button1);
+		button1.setEnabled(true);
+		if (count <= 9) {
 
-
-		public void Next(View view) {
-			count = count + 1;
-			Button button1 = (Button) findViewById(R.id.button1);
-			button1.setEnabled(true);
-			if (count <= 9) {
-
-				Resources resources = getResources();
-				int resourceID = resources.getIdentifier("image" + count, "drawable", getPackageName());
-				ImageView image = (ImageView) findViewById(R.id.imageView);
-				image.setImageResource(resourceID);
-				int restringID = resources.getIdentifier("string" + count, "string", getPackageName());
-				TextView textView = (TextView) findViewById(R.id.textView);
-				textView.setText(restringID);
-
-			}
-			if (count == 9) {
-				Button button = (Button) findViewById(R.id.button);
-				button.setEnabled(false);
-			}
+			Resources resources = getResources();
+			int resourceID = resources.getIdentifier("image" + count, "drawable", getPackageName());
+			ImageView image = (ImageView) findViewById(R.id.imageView);
+			image.setImageResource(resourceID);
+			int restringID = resources.getIdentifier("string" + count, "string", getPackageName());
+			TextView textView = (TextView) findViewById(R.id.textView);
+			textView.setText(restringID);
 
 		}
+		if (count == 9) {
+			Button button = (Button) findViewById(R.id.button);
+			button.setEnabled(false);
+		}
+
+	}
 
 	public void Previous(View view){
 		count = count - 1;
